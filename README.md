@@ -5,6 +5,14 @@ Projeto teste para atender a seguinte descrição:
 
 "Um comerciante precisa controlar o seu fluxo de caixa diário com os lançamentos (débitos e créditos), também precisa de um relatório que disponibilize o saldo diário consolidado."
 
+## Itens
+
+- [Documentação do projeto](https://github.com/glauberfergf/cashflowmanagement/tree/main/Documentacao)
+- [Collection Postman](https://github.com/glauberfergf/cashflowmanagement/tree/main/Postman)
+- [KeyCloak Config](https://github.com/glauberfergf/cashflowmanagement/tree/main/keycloak-config)
+- [Script Banco de dados](https://github.com/glauberfergf/cashflowmanagement/tree/main/mysql-init)
+- [Solution do projeto](https://github.com/glauberfergf/cashflowmanagement/blob/main/CashFlowManagement.sln)
+
 ## Características
 
 Com essa descrição e com a liberdade de escolher a forma de desenvolver o projeto, tecnologias e estruturas, optei pelos seguintes itens:
