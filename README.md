@@ -26,18 +26,18 @@ Com essa descrição e com a liberdade de escolher a forma de desenvolver o proj
 	- Test - Camada responsável por conter os testes automatizados da solução.
 
 Fluxo da solução (Sucesso):
-	1 - Para realizar um request para a API, é necessário autenticar com o gerenciador de identidade (Keycloak)
-	2 - Realizando o login com sucesso será retornado um token do tipo bearer que deverá ser passando no header das chamadas
-	3 - Para enviar uma order de pagamento para a API Payment (Post)
-	4 - A API recebe a requisição, converte o DTO enviado utilizando o AutoMapper e envia para o RabbitMQ para ser processado
-	5 - Depois de enviar para o RabbitMQ retorna o status 200 informando que foi recebido a order de pagamento
-	6 - A aplicação worker que está conectada ao RabbitMQ recebe a mensagem que foi enviada pela API
-	7 - É feito a a transformação da mensagem para o objeto do dominio e enviado para o banco de dados
-	8 - Usuário realiza outra chamada de request (GET) para tirar um relatório passando um objeto de filtro com alguns parametros
-	9 - A API recebe o request de consulta de relatório
-	10 - Realiza a ação passando pelas camadas de Application e Repository para conseguir acessar o banco de dados
-	11 - É realizado uma consulta no banco de dados que foi gerada na camada anterior
-	12 - Encontrando os dados é feito uma conversão do objeto do banco para um DTO antes de retornar para o usuário que solicitou 
+	- Para realizar um request para a API, é necessário autenticar com o gerenciador de identidade (Keycloak)
+	- Realizando o login com sucesso será retornado um token do tipo bearer que deverá ser passando no header das chamadas
+	- Para enviar uma order de pagamento para a API Payment (Post)
+	- A API recebe a requisição, converte o DTO enviado utilizando o AutoMapper e envia para o RabbitMQ para ser processado
+	- Depois de enviar para o RabbitMQ retorna o status 200 informando que foi recebido a order de pagamento
+	- A aplicação worker que está conectada ao RabbitMQ recebe a mensagem que foi enviada pela API
+	- É feito a a transformação da mensagem para o objeto do dominio e enviado para o banco de dados
+	- Usuário realiza outra chamada de request (GET) para tirar um relatório passando um objeto de filtro com alguns parametros
+	- A API recebe o request de consulta de relatório
+	- Realiza a ação passando pelas camadas de Application e Repository para conseguir acessar o banco de dados
+	- É realizado uma consulta no banco de dados que foi gerada na camada anterior
+	- Encontrando os dados é feito uma conversão do objeto do banco para um DTO antes de retornar para o usuário que solicitou 
 
 ##Desenho da Solução
 
