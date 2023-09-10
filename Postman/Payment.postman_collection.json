@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "b6afd501-755d-41f1-943d-448768f87a9d",
+		"name": "Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29520078"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "payment-api",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "payment",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "KqAX@_nhp73G!",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "tQ2pmkAkRvjiOyWTgOW6QVF4AA5nk06C",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/payments/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"payments",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GetById",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const url = 'http://localhost:8080/realms/payments/protocol/openid-connect/token'; \r",
+							"const tokenRequest = { url: url,\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'urlencoded',\r",
+							"    urlencoded: [\r",
+							"         { key : \"grant_type\", value : \"password\"},\r",
+							"            { key : \"client_id\", value : \"payment-api\"},\r",
+							"            { key : \"username\", value : \"payment\"},\r",
+							"            { key : \"password\", value : \"KqAX@_nhp73G!\"},\r",
+							"            { key : \"client_secret\", value : \"tQ2pmkAkRvjiOyWTgOW6QVF4AA5nk06C\"}\r",
+							"    ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(tokenRequest, function (error, response) {\r",
+							"  if (response.code == 200) {\r",
+							"    const responseBody = response.json();\r",
+							"    pm.environment.set('access_token', responseBody.access_token);\r",
+							"  } else {\r",
+							"    console.log('Erro ao fazer login:', response.status);\r",
+							"  }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5085/api/Payment/65446c8a-4dbf-11ee-90ee-0242ac110003",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5085",
+					"path": [
+						"api",
+						"Payment",
+						"65446c8a-4dbf-11ee-90ee-0242ac110003"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetByFilter",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const url = 'http://localhost:8080/realms/payments/protocol/openid-connect/token'; \r",
+							"const tokenRequest = { url: url,\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'urlencoded',\r",
+							"    urlencoded: [\r",
+							"         { key : \"grant_type\", value : \"password\"},\r",
+							"            { key : \"client_id\", value : \"payment-api\"},\r",
+							"            { key : \"username\", value : \"payment\"},\r",
+							"            { key : \"password\", value : \"KqAX@_nhp73G!\"},\r",
+							"            { key : \"client_secret\", value : \"tQ2pmkAkRvjiOyWTgOW6QVF4AA5nk06C\"}\r",
+							"    ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(tokenRequest, function (error, response) {\r",
+							"  if (response.code == 200) {\r",
+							"    const responseBody = response.json();\r",
+							"    pm.environment.set('access_token', responseBody.access_token);\r",
+							"  } else {\r",
+							"    console.log('Erro ao fazer login:', response.status);\r",
+							"  }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5085/api/Payment?Status=2&DateOnly=2023-09-10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5085",
+					"path": [
+						"api",
+						"Payment"
+					],
+					"query": [
+						{
+							"key": "Status",
+							"value": "2"
+						},
+						{
+							"key": "CreatedAtMin",
+							"value": "2023-09-07%2020%3A12%3A29",
+							"disabled": true
+						},
+						{
+							"key": "DateOnly",
+							"value": "2023-09-10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAsync - SendToQueue",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const url = 'http://localhost:8080/realms/payments/protocol/openid-connect/token'; \r",
+							"const tokenRequest = { url: url,\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'urlencoded',\r",
+							"    urlencoded: [\r",
+							"         { key : \"grant_type\", value : \"password\"},\r",
+							"            { key : \"client_id\", value : \"payment-api\"},\r",
+							"            { key : \"username\", value : \"payment\"},\r",
+							"            { key : \"password\", value : \"KqAX@_nhp73G!\"},\r",
+							"            { key : \"client_secret\", value : \"tQ2pmkAkRvjiOyWTgOW6QVF4AA5nk06C\"}\r",
+							"    ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(tokenRequest, function (error, response) {\r",
+							"  if (response.code == 200) {\r",
+							"    const responseBody = response.json();\r",
+							"    pm.environment.set('access_token', responseBody.access_token);\r",
+							"  } else {\r",
+							"    console.log('Erro ao fazer login:', response.status);\r",
+							"  }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"TransactionId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"Amount\": 120,\r\n  \"paymentType\": 2,\r\n  \"PaymentOrigin\": 3,\r\n  \"PaymentDate\": \"2023-09-04T23:54:08.350Z\",\r\n  \"PaymentDescription\": \"Pagamento realizado na loja\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5085/api/Payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5085",
+					"path": [
+						"api",
+						"Payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pay",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const url = 'http://localhost:8080/realms/payments/protocol/openid-connect/token'; \r",
+							"const tokenRequest = { url: url,\r",
+							"  method: 'POST',\r",
+							"  header: {\r",
+							"    'Content-Type': 'application/x-www-form-urlencoded'\r",
+							"  },\r",
+							"  body: {\r",
+							"    mode: 'urlencoded',\r",
+							"    urlencoded: [\r",
+							"         { key : \"grant_type\", value : \"password\"},\r",
+							"            { key : \"client_id\", value : \"payment-api\"},\r",
+							"            { key : \"username\", value : \"payment\"},\r",
+							"            { key : \"password\", value : \"KqAX@_nhp73G!\"},\r",
+							"            { key : \"client_secret\", value : \"tQ2pmkAkRvjiOyWTgOW6QVF4AA5nk06C\"}\r",
+							"    ]\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.sendRequest(tokenRequest, function (error, response) {\r",
+							"  if (response.code == 200) {\r",
+							"    const responseBody = response.json();\r",
+							"    pm.environment.set('access_token', responseBody.access_token);\r",
+							"  } else {\r",
+							"    console.log('Erro ao fazer login:', response.status);\r",
+							"  }\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Amount\": 110,\r\n  \"paymentType\": 2,\r\n  \"PaymentOrigin\": 3,\r\n  \"PaymentDate\": \"2023-09-10T13:54:08.350Z\",\r\n  \"PaymentDescription\": \"Pagamento realizado na loja\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5085/api/Payment/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5085",
+					"path": [
+						"api",
+						"Payment",
+						"pay"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

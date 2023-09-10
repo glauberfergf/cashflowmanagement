@@ -1,0 +1,78 @@
+# Arquivos de compilação
+bin/
+obj/
+
+# Arquivos temporários
+[Tt]emp/
+[Oo]bj/
+IISExpress/
+.vscode/
+
+# Logs e arquivos gerados pelo sistema
+*.user
+*.bak
+*.log
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+*.pubxml
+*.publishproj
+*.user
+*.bak
+*.suo
+*.cache
+*.log
+*.vspscc
+TestResults
+[Bb]in
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Ee][Mm][Pp][Tt][Yy]/    # diretório vazio no Windows
+[Tt][Ee][Ss][Tt][Oo][Uu][Tt]/
+[Ll][Oo][Gg][Ss]/
+[Ll][Ii][Bb][Ll][Oo][Gg][Ss]/
+[Ww][Ee][Bb][Ll][Oo][Gg][Ss]/
+[Ss][Tt][Aa][Tt][Ee][Ss]/
+[Pp][Rr][Ee][Ss][Hh][Aa][Rr][Ee][Dd][__]CheckinTestResult*
+[Tt][Ee][Mm][Pp][__]*
+[Oo][Bb][Jj][Ee][Cc][Tt][Ss][__]*
+[Bb][Ii][Nn][Aa][Rr][Ii][Ee][Ss][__]*
+[Ll][Oo][Gg][Ss][__]*
+
+# Arquivos de usuário do Visual Studio
+[Bb][Ii][Nn]/
+[Ii][Nn][Tt][Ee][Rr][Mm][Ee][Dd][Ii][Aa][Tt][Ee]/
+[Oo][Bb][Jj][Ee][Cc][Tt][Ss]/
+[Ii][Pp][Cc][ _][Rr][Ee][Ss][Uu][Ll][Tt][Ss]/
+[Vv][Ii][Ee][Ww][Ss]/
+[Dd][Ee][Bb][Uu][Gg]/
+[Tt][Ee][Ss][Tt][Dd][Aa][Tt][Aa]/
+[Tt][Ee][Ss][Tt][Oo][Uu][Tt]/
+[Ss][Qq][Ll][Dd][Ee][Bb][Uu][Gg]/
+[Ss][Ss][Dd][Ll][Ii][Bb]/
+[Oo][Bb][Jj][Ee][Cc][Tt][Cc][Aa][Cc][Hh][Ee][Ss]/
+[Ss][Tt][Yy][Ll][Ee][Cc][Oo][Pp][Ee]/
+[Ww][Pp][Rr][Oo][Jj][Ee][Cc][Tt] [Ss][Hh][Aa][Dd][Oo][Ww][Cc][Aa][Cc][Hh][Ee]/
+[Cc][Ll][Ii][Ee][Nn][Tt][Bb][Ii][Nn]/
+[Vv][Ss][Ii][Nn]/
+[Tt][Hh][Uu][Mm][Bb][Ss].[Dd][Bb]/
+
+# Arquivos de ambiente
+[Dd][Ee][Bb][Uu][Gg]/
+[Rr][Ee][Ll][Ee][Aa][Ss][Ee]/
+[Ss][Tt][Aa][Rr][Tt][Uu][Pp]/[Ll][Oo][Gg]/[Ii][Ss][Ll][Oo][Gg].*
+[Bb][Ii][Nn]/[Dd][Ee][Bb][Uu][Gg]/
