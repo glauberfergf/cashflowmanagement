@@ -5,6 +5,14 @@ Projeto teste para atender a seguinte descrição:
 
 "Um comerciante precisa controlar o seu fluxo de caixa diário com os lançamentos (débitos e créditos), também precisa de um relatório que disponibilize o saldo diário consolidado."
 
+## Itens
+
+- [Documentação do projeto](https://github.com/glauberfergf/cashflowmanagement/tree/main/Documentacao)
+- [Collection Postman](https://github.com/glauberfergf/cashflowmanagement/tree/main/Postman)
+- [KeyCloak Config](https://github.com/glauberfergf/cashflowmanagement/tree/main/keycloak-config)
+- [Script Banco de dados](https://github.com/glauberfergf/cashflowmanagement/tree/main/mysql-init)
+- [Solution do projeto](https://github.com/glauberfergf/cashflowmanagement/blob/main/CashFlowManagement.sln)
+
 ## Características
 
 Com essa descrição e com a liberdade de escolher a forma de desenvolver o projeto, tecnologias e estruturas, optei pelos seguintes itens:
@@ -25,21 +33,22 @@ Com essa descrição e com a liberdade de escolher a forma de desenvolver o proj
 	- CrossCutting - Camada responsável por conter aspectos transversais da aplicação facilitando a configurações entre camadas.
 	- Test - Camada responsável por conter os testes automatizados da solução.
 
-Fluxo da solução (Sucesso):
-	1 - Para realizar um request para a API, é necessário autenticar com o gerenciador de identidade (Keycloak)
-	2 - Realizando o login com sucesso será retornado um token do tipo bearer que deverá ser passando no header das chamadas
-	3 - Para enviar uma order de pagamento para a API Payment (Post)
-	4 - A API recebe a requisição, converte o DTO enviado utilizando o AutoMapper e envia para o RabbitMQ para ser processado
-	5 - Depois de enviar para o RabbitMQ retorna o status 200 informando que foi recebido a order de pagamento
-	6 - A aplicação worker que está conectada ao RabbitMQ recebe a mensagem que foi enviada pela API
-	7 - É feito a a transformação da mensagem para o objeto do dominio e enviado para o banco de dados
-	8 - Usuário realiza outra chamada de request (GET) para tirar um relatório passando um objeto de filtro com alguns parametros
-	9 - A API recebe o request de consulta de relatório
-	10 - Realiza a ação passando pelas camadas de Application e Repository para conseguir acessar o banco de dados
-	11 - É realizado uma consulta no banco de dados que foi gerada na camada anterior
-	12 - Encontrando os dados é feito uma conversão do objeto do banco para um DTO antes de retornar para o usuário que solicitou 
+## Fluxo da solução (Sucesso):
 
-##Desenho da Solução
+- Para realizar um request para a API, é necessário autenticar com o gerenciador de identidade (Keycloak)
+- Realizando o login com sucesso será retornado um token do tipo bearer que deverá ser passando no header das chamadas
+- Para enviar uma order de pagamento para a API Payment (Post)
+- A API recebe a requisição, converte o DTO enviado utilizando o AutoMapper e envia para o RabbitMQ para ser processado
+- Depois de enviar para o RabbitMQ retorna o status 200 informando que foi recebido a order de pagamento
+- A aplicação worker que está conectada ao RabbitMQ recebe a mensagem que foi enviada pela API
+- É feito a a transformação da mensagem para o objeto do dominio e enviado para o banco de dados
+- Usuário realiza outra chamada de request (GET) para tirar um relatório passando um objeto de filtro com alguns parametros
+- A API recebe o request de consulta de relatório
+- Realiza a ação passando pelas camadas de Application e Repository para conseguir acessar o banco de dados
+- É realizado uma consulta no banco de dados que foi gerada na camada anterior
+- Encontrando os dados é feito uma conversão do objeto do banco para um DTO antes de retornar para o usuário que solicitou 
+
+## Desenho da Solução
 
 ![Desenho](https://github.com/glauberfergf/cashflowmanagement/raw/main/Documentacao/cashflowmanagement.drawio.png)
 
@@ -62,8 +71,8 @@ Antes de começar, verifique se você atende aos seguintes requisitos:
 	- Conectar no banco de dados e executar o arquivo que está na pasta /mysql-init
 	- Acessar via navegador o serviço Keycloak e importar a configuração que está na pasta /keycloak-config
 		url: http://localhost:8080/
-		*em caso de dúvidas, seguir esses passos: https://marraia.medium.com/utiliza%C3%A7%C3%A3o-do-keycloak-em-aplica%C3%A7%C3%B5es-net-6-0-4a787520c85b
-		
+		*em caso de dúvidas, seguir esses passos [link](https://marraia.medium.com/utiliza%C3%A7%C3%A3o-do-keycloak-em-aplica%C3%A7%C3%B5es-net-6-0-4a787520c85b)
+		 
 
 ## Como Executar o Projeto
 
@@ -77,13 +86,15 @@ Siga estas etapas para executar o projeto em sua máquina:
 3. Abrir a solution da aplicação conferir se a configuração para rodar multiplas aplicações está habilitado e rodar.
 Irá executar a API e o Worker
 
-4. Na pasta Postman que está na raiz, encontra-se a collection do Postman com as chamadas e exemplos para utilizar
+5. Na pasta Postman que está na raiz, encontra-se a collection do Postman com as chamadas e exemplos para utilizar
+   	- Executar a chamada "CreateAsync - SendToQueue"
+   	- Executar a chamda "GetByFilter" alterando a data para retornar o relatório com os lançamentos criados
 
-5. Na pasta mysql-init, encontra-se o script de criação do banco de dados e tabela utilizada na solução (script possui validação). Ao subir a solução pelo docker-compose já irá ser executado o script.
+7. Na pasta mysql-init, encontra-se o script de criação do banco de dados e tabela utilizada na solução (script possui validação). Ao subir a solução pelo docker-compose já irá ser executado o script.
 
-6. Na pasta Documentacao, encontra-se o desenho da aplicação que foi feito utilizando o draw.io
+8. Na pasta Documentacao, encontra-se o desenho da aplicação que foi feito utilizando o draw.io
 
-7. As aplicações irão abrir nos seguintes endereços:
+9. As aplicações irão abrir nos seguintes endereços:
 	- Keycloak: http://localhost:8080/
 	- RabbitMQ: http://localhost:15672/
 	- Mysql: Server=localhost
