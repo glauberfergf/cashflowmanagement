@@ -22,13 +22,6 @@ namespace CashFlowManagement.RabbitMq.Implementation
                 // Adicione outras configurações necessárias aqui
             };
 
-            // Configuração da DLQ
-            //using var connection = _factory.CreateConnection();
-            //using var channel = connection.CreateModel();
-            //channel.ExchangeDeclare(_config.ExchangeDLX, ExchangeType.Direct, durable: true,autoDelete: false,arguments: null);
-            //channel.QueueDeclare(_config.QueueDLQ, durable: true, exclusive: false, autoDelete: false, arguments: null);
-            //channel.QueueBind(_config.QueueDLQ, _config.ExchangeDLX, _config.RoutingKeyDLQ);
-
             _connection = CreateConnection();
             _channel = _connection.CreateModel();
         }

@@ -113,10 +113,10 @@ namespace CashFlowManagement.API.Controllers
             if (result is not null)
             {
                 var paymentReport = _mapper.Map<IEnumerable<PaymentReport>>(result);
-                _logger.LogInformation($"PaymentController.GetById found");
+                _logger.LogInformation($"PaymentController.GetByFilter found");
                 return Ok(paymentReport);
             }
-            _logger.LogInformation($"PaymentController.GetById not found");
+            _logger.LogInformation($"PaymentController.GetByFilter not found");
 
             return NotFound();
         }

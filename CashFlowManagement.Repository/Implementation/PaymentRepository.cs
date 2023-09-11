@@ -6,7 +6,6 @@ using CashFlowManagement.Domain.Configuration;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Microsoft.Extensions.Options;
-using CashFlowManagement.Domain.Enums;
 
 namespace CashFlowManagement.Repository.Implementation
 {

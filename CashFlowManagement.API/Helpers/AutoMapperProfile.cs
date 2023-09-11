@@ -14,7 +14,6 @@ namespace CashFlowManagement.API.Helpers
         /// </summary>
         public AutoMapperProfile()
         {
-            // CreateRequest -> User
             CreateMap<OrderPayment, Payment>();
 
             CreateMap<Payment, PaymentReport>();

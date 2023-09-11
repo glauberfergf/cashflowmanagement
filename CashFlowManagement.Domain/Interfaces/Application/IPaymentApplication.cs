@@ -1,5 +1,4 @@
-﻿using CashFlowManagement.Domain.DTO;
-using CashFlowManagement.Domain.Entity;
+﻿using CashFlowManagement.Domain.Entity;
 using CashFlowManagement.Domain.Filters;
 
 namespace CashFlowManagement.Domain.Interfaces.Application

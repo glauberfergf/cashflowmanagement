@@ -1,11 +1,8 @@
-﻿using NUnit.Framework;
-using Moq;
+﻿using Moq;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
 using CashFlowManagement.Domain.RabbitMq;
-using System.Collections.Generic;
 using CashFlowManagement.RabbitMq.Implementation;
 
 namespace CashFlowManagement.Test.Infrastructure.RabbitMq
